@@ -1,0 +1,45 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+myenv/
+
+# Environment variables
+.env
+
+# SQLite database
+db.sqlite3
+
+# Secret keys and credentials folder
+keys/
+
+# VSCode settings (optional)
+.vscode/
+
+# Docker-related
+*.log
+*.pid
+*.tar
+*.bak
+*.swp
+.dockerignore
+
+# Media and staticfiles (if collected)
+staticfiles/
+outputs/
+inputs/
+codes/
+
+# System files (Windows/macOS/Linux)
+.DS_Store
+Thumbs.db
+
+# Coverage/test artifacts (optional)
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Pytest
+.pytest_cache/

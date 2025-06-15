@@ -1,0 +1,45 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Create a New Problem</h2>
+
+  <form method="post" class="edit-form">
+    {% csrf_token %}
+    
+    <div class="form-section styled-form">
+      {{ problem_form.as_p }}
+    </div>
+
+    <h3>Test Cases</h3>
+    <div id="test-cases" class="test-cases-container">
+      {{ test_case_formset.management_form }}
+      {% for form in test_case_formset %}
+        <div class="testcase-form-block">
+          {{ form.as_p }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button type="button" class="btn btn-secondary" onclick="addTestCase()">＋ Add Another Test Case</button><br><br>
+
+    <button type="submit" class="btn btn-green">Create Problem</button>
+  </form>
+
+  <script>
+    function addTestCase() {
+      let totalForms = document.getElementById('id_form-TOTAL_FORMS');
+      let currentFormCount = parseInt(totalForms.value);
+      let newFormIndex = currentFormCount;
+
+      let newForm = document.querySelector('.testcase-form-block').cloneNode(true);
+      newForm.innerHTML = newForm.innerHTML.replace(/form-0/g, `form-${newFormIndex}`);
+      document.getElementById('test-cases').appendChild(newForm);
+      totalForms.value = newFormIndex + 1;
+
+      // Clear the input fields in the new form
+      newForm.querySelectorAll('input, textarea').forEach(input => input.value = '');
+    }
+  </script>
+{% endblock %}

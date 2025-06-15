@@ -1,0 +1,73 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Online Judge{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #1f2937;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .problem-card {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+        }
+        .problem-card:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+    <div>
+        <a href="{% url 'all_problems' %}">Online Judge</a>
+    </div>
+    <div>
+        <a href="{% url 'code_problem:submission_history' request.user.id %}">Profile</a>
+        <a href="{% url 'create_problem' %}">Create Problem</a>
+        <a href="{% url 'logout-user' %}">Logout</a>
+    </div>
+</div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

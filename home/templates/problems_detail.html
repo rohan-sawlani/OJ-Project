@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ problem.title }}</h2>
+
+  <p><strong>Difficulty:</strong> {{ problem.difficulty }}</p>
+  <p><strong>Problem Statement:</strong><br>{{ problem.statement }}</p>
+  <p><strong>Input Format:</strong><br>{{ problem.input_format }}</p>
+  <p><strong>Output Format:</strong><br>{{ problem.output_format }}</p>
+  <p><strong>Sample Input:</strong><br>{{ problem.sample_input }}</p>
+  <p><strong>Sample Output:</strong><br>{{ problem.sample_output }}</p>
+  <p><strong>Constraints:</strong><br>{{ problem.constraints }}</p>
+  <p><strong>Tags:</strong> {{ problem.tags }}</p>
+  <p><strong>Created At:</strong> {{ problem.created_at }}</p>
+
+  {% if request.user == problem.creator or request.user.is_staff %}
+    <a href="{% url 'edit_problem' problem.id %}" class="btn btn-green">Add / Edit Test Cases</a>
+  {% endif %}
+
+  <a href="{% url 'code_problem:submit' problem.id %}" class="btn">Code →</a>
+  <a href="{% url 'all_problems' %}" class="btn btn-back">← Back to All Problems</a>
+{% endblock %}

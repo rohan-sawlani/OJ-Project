@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="center-text">Submit Code</h2>
+  
+  <form method="post" class="code-submit-form">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="{{ form.language.id_for_label }}">Language</label>
+      {{ form.language }}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.code.id_for_label }}">Code</label>
+      {{ form.code }}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.input_data.id_for_label }}">Input</label>
+      {{ form.input_data }}
+    </div>
+    
+    <div class="btn-group">
+      <button type="submit" name="action" value="run" class="btn btn-blue">Run Code</button>
+      <button type="submit" name="action" value="submit" class="btn btn-green">Submit Code</button>
+    </div>
+  </form>
+{% endblock %}

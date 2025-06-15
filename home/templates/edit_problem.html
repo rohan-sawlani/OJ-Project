@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Edit Problem: {{ problem.title }}</h2>
+
+  <form method="POST" class="edit-form">
+    {% csrf_token %}
+    <div class="form-section styled-form">
+      {{ problem_form.as_p }}
+    </div>
+
+    <h3>Test Cases</h3>
+    {{ test_case_formset.management_form }}
+
+    <div id="test-cases-container">
+      {% for form in test_case_formset %}
+        <div class="testcase-form-block">
+          {{ form.as_p }}
+          {% if form.can_delete %}
+            <label for="{{ form.prefix }}-DELETE"><strong>Delete:</strong></label>
+            {{ form.DELETE }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-green">💾 Save</button>
+  </form>
+
+  <a href="{% url 'problems_detail' problem.id %}" class="btn btn-back">← Back to Problem Detail</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const deleteCheckboxes = document.querySelectorAll('input[type=checkbox][name$="-DELETE"]');
+      deleteCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", function () {
+          const block = checkbox.closest(".testcase-form-block");
+          block.style.display = checkbox.checked ? "none" : "block";
+        });
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="center-text">Execution Result</h1>
+
+  <div class="result-section">
+    <p><strong>Language:</strong> {{ submission.language }}</p>
+
+    <p><strong>Code:</strong></p>
+    <pre class="code-box">{{ submission.code }}</pre>
+
+    <p><strong>Input:</strong></p>
+    <pre class="code-box">{{ submission.input_data }}</pre>
+
+    <p><strong>Output:</strong></p>
+    <pre class="code-box">{{ output }}</pre>
+    
+    <a href="" class="btn btn-green">Run Another Code</a>
+  </div>
+{% endblock %}

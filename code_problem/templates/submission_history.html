@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="center">User Profile</h1>
+  <div class="user-box">
+  
+  <p><strong>Username:</strong> {{ user_profile.username }}</p>
+  <p><strong>Joined:</strong> {{ user_profile.date_joined|date:"F j, Y" }}</p>
+</div>
+
+<h2>Submission History</h2>
+  <div class="table-container">
+    <table class="submission-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Code</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sub in submissions %}
+          <tr>
+            <td>{{ sub.timestamp }}</td>
+            <td><a href="{% url 'code_problem:view_code' sub.id %}" class="link-btn">View Code</a></td>
+            <td>{{ sub.verdict }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3" class="no-data">No submissions yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

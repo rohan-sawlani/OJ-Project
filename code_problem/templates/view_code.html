@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="center-text">Your Submission</h2>
+
+  <div class="submission-info">
+    <p><strong>Verdict:</strong> {{ submission.verdict }}</p>
+  </div>
+
+  <pre class="light-code-block"><code>{{ submission.code }}</code></pre>
+
+  <form method="post" class="ai-review-form">
+    {% csrf_token %}
+    <button type="submit" class="btn-primary" name="ai_review">AI Review</button>
+  </form>
+
+  {% if ai_feedback %}
+    <h3>AI Feedback:</h3>
+    <div class="ai-feedback-box">
+      {{ ai_feedback|safe }}
+    </div>
+  {% endif %}
+{% endblock %}

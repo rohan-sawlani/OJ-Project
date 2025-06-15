@@ -1,0 +1,136 @@
+
+
+
+
+{% block content %}
+<style>
+  body {
+    background-color: #f8fafc;
+  }
+
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+  }
+
+  .register-card {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .register-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .register-title span {
+    color: #3b82f6;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .custom-input {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 5px;
+    border: 1px solid #cbd5e1;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  .custom-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  .btn-primary {
+    width: 100%;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  .btn-primary:hover {
+    background-color: #2563eb;
+  }
+
+  .text-center a {
+    color: #3b82f6;
+  }
+
+  .alert {
+    margin-bottom: 1rem;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 0.75rem;
+    border-radius: 6px;
+  }
+</style>
+<div class="register-container">
+  <form method="post" class="register-card">
+    {% csrf_token %}
+    <h2 class="register-title">👨‍💻 Welcome to <span>Online Judge</span><br><small>Register user😊</small></h2>
+    <hr />
+
+    {% if messages %}
+      <div class="alert alert-primary" role="alert">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        class="form-control custom-input"
+        placeholder="Choose a username"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control custom-input"
+        placeholder="Create a password"
+        required
+      />
+    </div>
+
+    <p class="mt-2 text-center">
+      Already have an account? <a href="/auth/login/">Login</a>
+    </p>
+
+    <button type="submit" class="btn-primary">Register</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+<h1>Code Compiler</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="action" value="run">Run Code</button>
+    <button type="submit" name="action" value="submit">Submit Code</button>
+</form>
