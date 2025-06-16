@@ -46,7 +46,16 @@ SECRET_KEY = 'django-insecure-4$r8l9l3+w3lbf8lv*m3n2(54(q1l-j7*%ivv1d=pr6(d##5%+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split()
+
+
+
+
 
 
 # Application definition
@@ -158,3 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
         
 #     },
 # ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://backend.theonlinejudge.info",
+]
