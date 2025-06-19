@@ -3,7 +3,7 @@
 A **full-stack Online Judge system** built as a Co-Op Internship project under AlgoUniversity. This platform supports secure multi-language code submission, real-time evaluation, and AI-assisted feedback using Google Gemini.
 
 ![GitHub repo](https://img.shields.io/badge/nullpointer-online--judge-blueviolet)
-![License](https://img.shields.io/badge/license-MIT-green)
+
 
 ---
 
