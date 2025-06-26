@@ -1,4 +1,4 @@
-# Null Pointer – Online Judge Platform 🚀
+# Null Point – Online Judge Platform 🚀
 
 A **full-stack Online Judge system** built as a Co-Op Internship project under AlgoUniversity. This platform supports secure multi-language code submission, real-time evaluation, and AI-assisted feedback using Google Gemini.
 
